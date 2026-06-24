@@ -1,0 +1,9 @@
+{
+  "total_cases": 600,
+  "total_events": 3600,
+  "average_throughput_hours": 99.09,
+  "max_throughput_hours": 235.96,
+  "total_sla_violations": 125,
+  "top_bottleneck_transition": "Shipping Started \u2192 Delivered",
+  "top_bottleneck_avg_hours": 33.53
+}

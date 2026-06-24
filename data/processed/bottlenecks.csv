@@ -1,0 +1,6 @@
+transition,average_duration_hours,transition_count
+Shipping Started → Delivered,33.53,600
+Production Started → Quality Check,27.49,600
+Order Approved → Production Started,26.04,600
+Quality Check → Shipping Started,9.23,600
+Order Created → Order Approved,2.81,600
