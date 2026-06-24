@@ -1,0 +1,10 @@
+{
+  "total_rows": 3600,
+  "total_cases": 600,
+  "duplicate_event_count": 0,
+  "cases_with_missing_steps": 0,
+  "cases_with_wrong_event_count": 0,
+  "cases_with_non_chronological_timestamps": 0,
+  "invalid_activity_count": 0,
+  "data_quality_score": 100.0
+}

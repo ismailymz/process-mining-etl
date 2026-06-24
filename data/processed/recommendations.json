@@ -1,0 +1,26 @@
+[
+  {
+    "priority": "High",
+    "category": "Bottleneck",
+    "finding": "Shipping Started \u2192 Delivered takes 33.53 hours on average.",
+    "recommendation": "Review the handover between teams and check whether capacity planning can reduce waiting time."
+  },
+  {
+    "priority": "High",
+    "category": "Bottleneck",
+    "finding": "Production Started \u2192 Quality Check takes 27.49 hours on average.",
+    "recommendation": "Review the handover between teams and check whether capacity planning can reduce waiting time."
+  },
+  {
+    "priority": "High",
+    "category": "Bottleneck",
+    "finding": "Order Approved \u2192 Production Started takes 26.04 hours on average.",
+    "recommendation": "Review the handover between teams and check whether capacity planning can reduce waiting time."
+  },
+  {
+    "priority": "High",
+    "category": "SLA",
+    "finding": "Order Approved \u2192 Production Started exceeds its SLA in 20.8% of observed cases.",
+    "recommendation": "Prioritize this process step and investigate the main causes of delayed cases."
+  }
+]

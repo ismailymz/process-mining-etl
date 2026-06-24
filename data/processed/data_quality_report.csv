@@ -1,0 +1,11 @@
+check_name,case_id,column,issue_detail,issue_count
+Missing values,,case_id,0 missing value(s),0
+Missing values,,activity,0 missing value(s),0
+Missing values,,timestamp,0 missing value(s),0
+Missing values,,region,0 missing value(s),0
+Missing values,,customer,0 missing value(s),0
+Missing values,,material_id,0 missing value(s),0
+Missing values,,quantity,0 missing value(s),0
+Missing values,,priority,0 missing value(s),0
+Missing values,,event_date,0 missing value(s),0
+Missing values,,is_high_priority,0 missing value(s),0

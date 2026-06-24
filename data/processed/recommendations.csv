@@ -1,0 +1,5 @@
+priority,category,finding,recommendation
+High,Bottleneck,Shipping Started → Delivered takes 33.53 hours on average.,Review the handover between teams and check whether capacity planning can reduce waiting time.
+High,Bottleneck,Production Started → Quality Check takes 27.49 hours on average.,Review the handover between teams and check whether capacity planning can reduce waiting time.
+High,Bottleneck,Order Approved → Production Started takes 26.04 hours on average.,Review the handover between teams and check whether capacity planning can reduce waiting time.
+High,SLA,Order Approved → Production Started exceeds its SLA in 20.8% of observed cases.,Prioritize this process step and investigate the main causes of delayed cases.
