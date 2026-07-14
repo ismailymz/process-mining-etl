@@ -102,14 +102,4 @@ Run `python src/conformance_check.py` after the ETL pipeline to compare every or
 
 This project mirrors typical internship tasks: building reliable data pipelines, cleaning operational source data, maintaining a SQL-ready data store, defining business metrics, and translating event data into process-improvement opportunities. It also demonstrates how to identify long waits and SLA risks that process owners can investigate.
 
-## Interview Talking Points
 
-- **ETL pipeline structure:** I separated extraction, transformation, and loading into small, reusable Python modules.
-- **SQLite as lightweight database:** SQLite provides a simple local database for storing and querying cleaned event data without extra infrastructure.
-- **SQL business logic:** The SQL queries answer practical questions about regions, priorities, quantities, activities, and customers.
-- **Process mining / bottleneck detection:** Transition durations, throughput time, and SLA checks reveal where orders wait longest.
-- **Dashboard visualization:** The Streamlit dashboard makes the key process KPIs and improvement opportunities easy to explore.
-
-## Interview Explanation (German)
-
-> Zur Vorbereitung auf ein Praktikum im Bereich Data Engineering und Prozessoptimierung habe ich ein kleines Projekt umgesetzt. Dabei habe ich einen SAP-ähnlichen Order-Prozess simuliert, Rohdaten mit Python und pandas verarbeitet, in SQLite geladen und anschließend Prozesskennzahlen berechnet. Zusätzlich habe ich eine einfache Process-Mining-Analyse durchgeführt, um Bottlenecks und SLA-Verletzungen zu erkennen. Die Ergebnisse habe ich in einem Streamlit-Dashboard visualisiert.
