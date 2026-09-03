@@ -1,10 +1,10 @@
 {
-  "total_rows": 3600,
-  "total_cases": 600,
+  "total_rows": 262200,
+  "total_cases": 13087,
   "duplicate_event_count": 0,
-  "cases_with_missing_steps": 0,
-  "cases_with_wrong_event_count": 0,
+  "cases_with_invalid_starting_activity": 0,
+  "cases_with_unusual_length": 177,
   "cases_with_non_chronological_timestamps": 0,
   "invalid_activity_count": 0,
-  "data_quality_score": 100.0
+  "data_quality_score": 98.65
 }

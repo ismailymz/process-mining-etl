@@ -1,0 +1,16 @@
+variant,case_count,coverage_percent,cumulative_coverage_percent
+A_SUBMITTED -> A_PARTLYSUBMITTED -> A_DECLINED,3429,26.2,26.2
+A_SUBMITTED -> A_PARTLYSUBMITTED -> A_DECLINED -> W_Afhandelen leads,1872,14.3,40.5
+A_SUBMITTED -> A_PARTLYSUBMITTED -> W_Afhandelen leads -> A_DECLINED -> W_Afhandelen leads,271,2.07,42.57
+A_SUBMITTED -> A_PARTLYSUBMITTED -> A_PREACCEPTED -> W_Afhandelen leads -> A_DECLINED -> W_Completeren aanvraag,209,1.6,44.17
+A_SUBMITTED -> A_PARTLYSUBMITTED -> A_PREACCEPTED -> A_DECLINED -> W_Completeren aanvraag,160,1.22,45.39
+A_SUBMITTED -> A_PARTLYSUBMITTED -> A_PREACCEPTED -> A_CANCELLED -> W_Completeren aanvraag,134,1.02,46.41
+A_SUBMITTED -> A_PARTLYSUBMITTED -> A_PREACCEPTED -> W_Afhandelen leads -> W_Completeren aanvraag -> A_DECLINED -> W_Completeren aanvraag,126,0.96,47.37
+A_SUBMITTED -> A_PARTLYSUBMITTED -> A_PREACCEPTED -> W_Completeren aanvraag -> A_DECLINED -> W_Completeren aanvraag,93,0.71,48.08
+A_SUBMITTED -> A_PARTLYSUBMITTED -> A_PREACCEPTED -> W_Completeren aanvraag -> A_CANCELLED -> W_Completeren aanvraag,89,0.68,48.76
+A_SUBMITTED -> A_PARTLYSUBMITTED -> A_PREACCEPTED -> W_Afhandelen leads -> W_Completeren aanvraag -> W_Completeren aanvraag -> A_DECLINED -> W_Completeren aanvraag,74,0.57,49.33
+A_SUBMITTED -> A_PARTLYSUBMITTED -> A_PREACCEPTED -> W_Completeren aanvraag -> W_Completeren aanvraag -> A_CANCELLED -> W_Completeren aanvraag,63,0.48,49.81
+A_SUBMITTED -> A_PARTLYSUBMITTED -> W_Afhandelen leads -> W_Afhandelen leads -> A_DECLINED -> W_Afhandelen leads,58,0.44,50.25
+A_SUBMITTED -> A_PARTLYSUBMITTED -> A_PREACCEPTED -> W_Afhandelen leads -> A_CANCELLED -> W_Completeren aanvraag,55,0.42,50.67
+A_SUBMITTED -> A_PARTLYSUBMITTED -> A_PREACCEPTED -> W_Afhandelen leads -> W_Completeren aanvraag -> W_Completeren aanvraag -> W_Completeren aanvraag -> A_DECLINED -> W_Completeren aanvraag,54,0.41,51.08
+A_SUBMITTED -> A_PARTLYSUBMITTED -> A_PREACCEPTED -> W_Completeren aanvraag -> W_Completeren aanvraag -> A_DECLINED -> W_Completeren aanvraag,44,0.34,51.42

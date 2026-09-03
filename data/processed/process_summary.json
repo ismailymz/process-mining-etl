@@ -1,9 +1,14 @@
 {
-  "total_cases": 600,
-  "total_events": 3600,
-  "average_throughput_hours": 99.09,
-  "max_throughput_hours": 235.96,
-  "total_sla_violations": 125,
-  "top_bottleneck_transition": "Shipping Started \u2192 Delivered",
-  "top_bottleneck_avg_hours": 33.53
+  "total_cases": 13087,
+  "total_events": 262200,
+  "complete_events": 164506,
+  "average_throughput_hours": 206.97,
+  "max_throughput_hours": 3293.32,
+  "total_sla_violations": 9127,
+  "transitions_with_insufficient_sla_sample": 25,
+  "top_bottleneck_transition": "W_Completeren aanvraag \u2192 O_SENT_BACK",
+  "top_bottleneck_avg_hours": 128.94,
+  "distinct_process_variants": 4336,
+  "top_variant_coverage_percent": 26.2,
+  "cases_covered_by_top_variants_report": 6731
 }
