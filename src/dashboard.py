@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import Optional
 
 import pandas as pd
 import streamlit as st
@@ -42,7 +43,7 @@ def load_dashboard_data() -> tuple[dict, pd.DataFrame, pd.DataFrame, pd.DataFram
 
 
 @st.cache_data
-def load_optional_json(file_name: str) -> dict | None:
+def load_optional_json(file_name: str) -> Optional[dict]:
     """Load an optional JSON analysis output when it has been generated."""
     file_path = PROCESSED_DIR / file_name
     if not file_path.exists():
@@ -52,7 +53,7 @@ def load_optional_json(file_name: str) -> dict | None:
 
 
 @st.cache_data
-def load_optional_csv(file_name: str) -> pd.DataFrame | None:
+def load_optional_csv(file_name: str) -> Optional[pd.DataFrame]:
     """Load an optional CSV analysis output when it has been generated."""
     file_path = PROCESSED_DIR / file_name
     return pd.read_csv(file_path) if file_path.exists() else None
@@ -88,10 +89,10 @@ def main() -> None:
         quality_columns[0].metric("Data Quality Score", f"{quality_summary.get('data_quality_score', 0):.2f}/100")
         quality_columns[1].metric("Duplicate Events", quality_summary.get("duplicate_event_count", 0))
         st.caption(
-            "Missing steps: "
-            f"{quality_summary.get('cases_with_missing_steps', 0)} | "
-            "Wrong event counts: "
-            f"{quality_summary.get('cases_with_wrong_event_count', 0)} | "
+            "Invalid starting activity: "
+            f"{quality_summary.get('cases_with_invalid_starting_activity', 0)} | "
+            "Unusual case length: "
+            f"{quality_summary.get('cases_with_unusual_length', 0)} | "
             "Invalid activities: "
             f"{quality_summary.get('invalid_activity_count', 0)}"
         )
@@ -122,22 +123,49 @@ def main() -> None:
     st.subheader("Bottleneck Chart")
     st.bar_chart(bottlenecks.set_index("transition")["average_duration_hours"])
 
-    st.subheader("Regional Analysis")
-    if "region" in transitions.columns:
-        regions = sorted(transitions["region"].dropna().unique())
-        if regions:
-            selected_region = st.selectbox("Select a region", regions)
-            regional_durations = (
-                transitions[transitions["region"] == selected_region]
+    st.subheader("Amount Category Analysis")
+    # Replaces the old region-based breakdown: BPI2012 has no regional
+    # dimension, but amount_category (derived in transform.py from the
+    # requested loan amount) answers a comparable "which segment behaves
+    # differently" question, and is the same breakdown already used in
+    # conformance_check.py and recommendations.py.
+    if "amount_category" in transitions.columns:
+        amount_categories = sorted(transitions["amount_category"].dropna().unique())
+        if amount_categories:
+            selected_amount_category = st.selectbox("Select an amount category", amount_categories)
+            amount_category_durations = (
+                transitions[transitions["amount_category"] == selected_amount_category]
                 .groupby("transition", as_index=False)["duration_hours"]
                 .mean()
                 .sort_values("duration_hours", ascending=False)
             )
-            st.bar_chart(regional_durations.set_index("transition")["duration_hours"])
+            st.bar_chart(amount_category_durations.set_index("transition")["duration_hours"])
         else:
-            st.info("No regional transition records are available.")
+            st.info("No amount-category transition records are available.")
     else:
-        st.info("Regional data is not available in transition_durations.csv.")
+        st.info("Amount-category data is not available in transition_durations.csv.")
+
+    st.subheader("Discovered Process Variants")
+    # BPI2012 has no fixed step sequence (24 activities, rework loops, 4,336
+    # distinct exact case sequences) -- there is no single "happy path" to
+    # assume. process_variants.csv is process_analysis.py's discovery step:
+    # the most frequent exact activity sequences, ranked by how much of the
+    # case population they actually cover. Showing it here makes that
+    # discovery visible instead of leaving it as a CSV nobody looks at.
+    process_variants = load_optional_csv("process_variants.csv")
+    if process_variants is None or process_variants.empty:
+        st.info("Process-variant results are not available yet. Run 'python src/process_analysis.py'.")
+    else:
+        top_variant_row = process_variants.iloc[0]
+        variant_columns = st.columns(2)
+        variant_columns[0].metric("Distinct Variants Discovered", summary.get("distinct_process_variants", "n/a"))
+        variant_columns[1].metric("Top Variant Coverage", f"{top_variant_row['coverage_percent']:.2f}%")
+        st.caption(
+            f"Top {len(process_variants)} variants shown here cover "
+            f"{process_variants['cumulative_coverage_percent'].iloc[-1]:.2f}% of all cases combined."
+        )
+        st.bar_chart(process_variants.set_index("variant")["case_count"])
+        st.dataframe(process_variants, use_container_width=True)
 
     st.subheader("SLA Violations")
     if violations.empty:
