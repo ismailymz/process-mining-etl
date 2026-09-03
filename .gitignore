@@ -9,3 +9,7 @@ database.db
 .idea/
 .vscode/
 .streamlit/secrets.toml
+.pytest_cache/
+logs/
+data/raw/*.csv
+data/raw/*.zip
